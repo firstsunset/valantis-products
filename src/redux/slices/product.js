@@ -27,8 +27,12 @@ const initialState = {
   error: null,
   productsIds: [],
   products: [],
-  categories: [],
-
+  productsIdsByName: [],
+  productsByName: [],
+  productsIdsByBrand: [],
+  productsByBrand: [],
+  productsIdsByPrice: [],
+  productsByPrice: [],
 };
 
 const slice = createSlice({
@@ -40,11 +44,6 @@ const slice = createSlice({
       state.isLoading = true;
     },
 
-    // setCategories(state, action) {
-    //   state.isLoading = false;
-    //   state.categories = action.payload;
-    // },
-
     setProductsIds(state, action) {
       state.isLoading = false;
       state.productsIds = action.payload;
@@ -53,6 +52,36 @@ const slice = createSlice({
     setProducts(state, action) {
       state.isLoading = false;
       state.products = action.payload;
+    },
+
+    setProductsIdsByName(state, action) {
+      state.isLoading = false;
+      state.productsIdsByName = action.payload;
+    },
+
+    setProductsByName(state, action) {
+      state.isLoading = false;
+      state.productsByName = action.payload;
+    },
+
+    setProductsIdsByBrand(state, action) {
+      state.isLoading = false;
+      state.productsIdsByBrand = action.payload;
+    },
+
+    setProductsByBrand(state, action) {
+      state.isLoading = false;
+      state.productsByBrand = action.payload;
+    },
+
+    setProductsIdsByPrice(state, action) {
+      state.isLoading = false;
+      state.productsIdsByPrice = action.payload;
+    },
+
+    setProductsByPrice(state, action) {
+      state.isLoading = false;
+      state.productsByPrice = action.payload;
     },
     // HAS ERROR
     hasError(state, action) {
@@ -97,6 +126,126 @@ export function getProducts(action, params) {
       );
       if (response.status === 200) {
         dispatch(slice.actions.setProducts(response.data.result));        
+      }
+    } catch (error) {
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+
+export function getProductsIdsByName(action, params) {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await axios.post(BASE_URL,
+        {
+          action,
+          params
+        },
+        axiosAuthorization
+      );
+      if (response.status === 200) {
+        dispatch(slice.actions.setProductsIdsByName(response.data.result));        
+      }
+    } catch (error) {
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+
+export function getProductsByName(action, params) {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await axios.post(BASE_URL,
+        {
+          action,
+          params
+        },
+        axiosAuthorization
+      );
+      if (response.status === 200) {
+        dispatch(slice.actions.setProductsByName(response.data.result));        
+      }
+    } catch (error) {
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+
+export function getProductsIdsByBrand(action, params) {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await axios.post(BASE_URL,
+        {
+          action,
+          params
+        },
+        axiosAuthorization
+      );
+      if (response.status === 200) {
+        dispatch(slice.actions.setProductsIdsByBrand(response.data.result));        
+      }
+    } catch (error) {
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+
+export function getProductsByBrand(action, params) {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await axios.post(BASE_URL,
+        {
+          action,
+          params
+        },
+        axiosAuthorization
+      );
+      if (response.status === 200) {
+        dispatch(slice.actions.setProductsByBrand(response.data.result));        
+      }
+    } catch (error) {
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+
+export function getProductsIdsByPrice(action, params) {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await axios.post(BASE_URL,
+        {
+          action,
+          params
+        },
+        axiosAuthorization
+      );
+      if (response.status === 200) {
+        dispatch(slice.actions.setProductsIdsByPrice(response.data.result));        
+      }
+    } catch (error) {
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+
+export function getProductsByPrice(action, params) {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await axios.post(BASE_URL,
+        {
+          action,
+          params
+        },
+        axiosAuthorization
+      );
+      if (response.status === 200) {
+        dispatch(slice.actions.setProductsByPrice(response.data.result));        
       }
     } catch (error) {
       dispatch(slice.actions.hasError(error));
