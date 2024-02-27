@@ -25,8 +25,10 @@ const axiosAuthorization = {
 const initialState = {
   isLoading: false,
   error: null,
+  productsIds: [],
+  products: [],
   categories: [],
-  products: ['product1'],
+
 };
 
 const slice = createSlice({
@@ -43,6 +45,11 @@ const slice = createSlice({
     //   state.categories = action.payload;
     // },
 
+    setProductsIds(state, action) {
+      state.isLoading = false;
+      state.productsIds = action.payload;
+    },
+
     setProducts(state, action) {
       state.isLoading = false;
       state.products = action.payload;
@@ -57,6 +64,26 @@ export const productActions = slice.actions;
 // Reducer
 export default slice.reducer;
 
+export function getProductsIds(action, params) {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await axios.post(BASE_URL,
+        {
+          action,
+          params
+        },
+        axiosAuthorization
+      );
+      if (response.status === 200) {
+        dispatch(slice.actions.setProductsIds(response.data.result));        
+      }
+    } catch (error) {
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+
 export function getProducts(action, params) {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
@@ -68,7 +95,9 @@ export function getProducts(action, params) {
         },
         axiosAuthorization
       );
-      dispatch(slice.actions.setProducts(response.data.result));
+      if (response.status === 200) {
+        dispatch(slice.actions.setProducts(response.data.result));        
+      }
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }

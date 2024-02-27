@@ -1,7 +1,7 @@
 .card {
   position: relative;
   width: 214px;
-  height: fit-content;
+  height: auto;
   display: flex;
   flex-direction: column;
   box-shadow: 0px 15px 20px rgb(0, 0, 0, 0.05); 
@@ -11,13 +11,22 @@
 
 .cardMain {
   margin: 20px 13px 20px 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.cardCode {
+.cardText {
   font-size: 11px;
   color: #878787;
 }
 
+.cardTextBold {
+  font-size: 13px;
+  font-weight: 400;
+  color: #3b2314;
+}
 .cardTitle {
   margin-bottom: 10px;
   margin-top: 10px;
