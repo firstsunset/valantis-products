@@ -2,9 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import md5 from 'js-md5';
 
-import { RootState } from '../store';
-
-
 const BASE_URL = "http://api.valantis.store:40000/";
 
 const generatePassword = (date = new Date()) => {
@@ -106,7 +103,7 @@ export function getProductsIds(action, params) {
       );
       if (response.status === 200) {
         dispatch(slice.actions.setProductsIds(response.data.result));        
-      }
+      } else return;
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }
@@ -129,6 +126,7 @@ export function getProducts(action, params) {
       }
     } catch (error) {
       dispatch(slice.actions.hasError(error));
+      console.log(error);
     }
   };
 }
@@ -148,6 +146,7 @@ export function getProductsIdsByName(action, params) {
         dispatch(slice.actions.setProductsIdsByName(response.data.result));        
       }
     } catch (error) {
+      console.log(error);
       dispatch(slice.actions.hasError(error));
     }
   };
@@ -168,6 +167,7 @@ export function getProductsByName(action, params) {
         dispatch(slice.actions.setProductsByName(response.data.result));        
       }
     } catch (error) {
+      console.log(error);
       dispatch(slice.actions.hasError(error));
     }
   };
@@ -188,6 +188,7 @@ export function getProductsIdsByBrand(action, params) {
         dispatch(slice.actions.setProductsIdsByBrand(response.data.result));        
       }
     } catch (error) {
+      console.log(error);
       dispatch(slice.actions.hasError(error));
     }
   };
@@ -208,6 +209,7 @@ export function getProductsByBrand(action, params) {
         dispatch(slice.actions.setProductsByBrand(response.data.result));        
       }
     } catch (error) {
+      console.log(error);
       dispatch(slice.actions.hasError(error));
     }
   };
@@ -228,6 +230,7 @@ export function getProductsIdsByPrice(action, params) {
         dispatch(slice.actions.setProductsIdsByPrice(response.data.result));        
       }
     } catch (error) {
+      console.log(error);
       dispatch(slice.actions.hasError(error));
     }
   };
@@ -248,6 +251,7 @@ export function getProductsByPrice(action, params) {
         dispatch(slice.actions.setProductsByPrice(response.data.result));        
       }
     } catch (error) {
+      console.log(error);
       dispatch(slice.actions.hasError(error));
     }
   };

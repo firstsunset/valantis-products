@@ -2,8 +2,15 @@
   margin: 40px 20px; 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   gap: 20px;
+}
+
+.mainBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
 }
 
 .mainList {
@@ -42,7 +49,12 @@
 .mainSideBar {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
+}
+
+label {
+  color: #3b2314;
+  font-weight: bold;
 }
 
 input {
@@ -57,6 +69,7 @@ input:focus {
 }
 
 .mainSideBarFilter {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px
@@ -66,6 +79,33 @@ input:focus {
   width: 175px;
   border: 1px solid #f0f0f0;
   border-radius: 3px;
-  
   padding: 5px 0; 
+  cursor: pointer;
 }
+
+.loaderBlock {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.loader {
+  padding: auto;
+  width: 48px;
+  height: 48px;
+  border: 5px solid #ca1726;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 
