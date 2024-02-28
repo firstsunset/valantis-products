@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import md5 from 'js-md5';
 
-const BASE_URL = "http://api.valantis.store:40000/";
+const BASE_URL = "http://api.valantis.store:40000";
 
 const generatePassword = (date = new Date()) => {
   const year = date.toLocaleString('default', {year: 'numeric'});
