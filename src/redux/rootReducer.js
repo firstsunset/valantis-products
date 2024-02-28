@@ -22,20 +22,6 @@ export const storage =
     ? createWebStorage('local')
     : createNoopStorage();
 
-// export const rootPersistConfig = {
-//   key: 'root',
-//   storage,
-//   keyPrefix: 'redux-',
-//   whitelist: [],
-// };
-
-// export const productPersistConfig = {
-//   key: 'product',
-//   storage,
-//   keyPrefix: 'redux-',
-//   whitelist: ['sortBy', 'checkout'],
-// };
-
 const rootReducer = combineReducers({
   product: productReducer,
 });
